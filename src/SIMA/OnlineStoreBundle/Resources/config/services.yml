@@ -1,0 +1,4 @@
+services:
+#    sima_online_store.example:
+#        class: SIMA\OnlineStoreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

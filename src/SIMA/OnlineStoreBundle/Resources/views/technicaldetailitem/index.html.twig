@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Technicaldetailitems list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Createdat</th>
+                <th>Updateat</th>
+                <th>Isdeleted</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for technicalDetailItem in technicalDetailItems %}
+            <tr>
+                <td><a href="{{ path('technicaldetailitem_show', { 'id': technicalDetailItem.id }) }}">{{ technicalDetailItem.id }}</a></td>
+                <td>{{ technicalDetailItem.value }}</td>
+                <td>{% if technicalDetailItem.createdAt %}{{ technicalDetailItem.createdAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if technicalDetailItem.updateAt %}{{ technicalDetailItem.updateAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if technicalDetailItem.isDeleted %}Yes{% else %}No{% endif %}</td>
+                <td>{% if technicalDetailItem.deletedAt %}{{ technicalDetailItem.deletedAt|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('technicaldetailitem_show', { 'id': technicalDetailItem.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('technicaldetailitem_edit', { 'id': technicalDetailItem.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('technicaldetailitem_new') }}">Create a new technicalDetailItem</a>
+        </li>
+    </ul>
+{% endblock %}

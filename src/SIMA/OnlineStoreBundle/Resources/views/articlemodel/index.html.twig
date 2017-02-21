@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articlemodels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Supplier</th>
+                <th>Createdat</th>
+                <th>Updateat</th>
+                <th>Isdeleted</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articleModel in articleModels %}
+            <tr>
+                <td><a href="{{ path('articlemodel_show', { 'id': articleModel.id }) }}">{{ articleModel.id }}</a></td>
+                <td>{{ articleModel.label }}</td>
+                <td>{{ articleModel.supplier }}</td>
+                <td>{% if articleModel.createdAt %}{{ articleModel.createdAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articleModel.updateAt %}{{ articleModel.updateAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articleModel.isDeleted %}Yes{% else %}No{% endif %}</td>
+                <td>{% if articleModel.deletedAt %}{{ articleModel.deletedAt|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('articlemodel_show', { 'id': articleModel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('articlemodel_edit', { 'id': articleModel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('articlemodel_new') }}">Create a new articleModel</a>
+        </li>
+    </ul>
+{% endblock %}

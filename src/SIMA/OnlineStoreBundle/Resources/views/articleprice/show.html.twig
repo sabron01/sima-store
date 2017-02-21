@@ -1,0 +1,56 @@
+{% extends 'SIMAOnlineStoreBundle::backend.html.twig' %}
+
+{% block content %}
+    <h1>Articleprice</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ articlePrice.id }}</td>
+            </tr>
+            <tr>
+                <th>Purchaseprice</th>
+                <td>{{ articlePrice.purchasePrice }}</td>
+            </tr>
+            <tr>
+                <th>Priceht</th>
+                <td>{{ articlePrice.priceHT }}</td>
+            </tr>
+            <tr>
+                <th>Pricettc</th>
+                <td>{{ articlePrice.priceTTC }}</td>
+            </tr>
+            <tr>
+                <th>Pricequotation</th>
+                <td>{{ articlePrice.priceQuotation }}</td>
+            </tr>
+            <tr>
+                <th>Pricediscont</th>
+                <td>{{ articlePrice.priceDiscont }}</td>
+            </tr>
+            <tr>
+                <th>Offerprice</th>
+                <td>{{ articlePrice.offerPrice }}</td>
+            </tr>
+            <tr>
+                <th>Supplier</th>
+                <td>{{ articlePrice.supplier }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('articleprice_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('articleprice_edit', { 'id': articlePrice.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

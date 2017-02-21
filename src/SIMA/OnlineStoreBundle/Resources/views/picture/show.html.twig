@@ -1,0 +1,40 @@
+{% extends 'SIMAOnlineStoreBundle::backend.html.twig' %}
+
+{% block content %}
+    <h1>Picture</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ picture.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ picture.title }}</td>
+            </tr>
+            <tr>
+                <th>Filename</th>
+                <td><img src="{{ asset('uploads/articles/'~picture.fileName) }} "></td>
+            </tr>
+            <tr>
+                <th>Alttext</th>
+                <td>{{ picture.altText }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('picture_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('picture_edit', { 'id': picture.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

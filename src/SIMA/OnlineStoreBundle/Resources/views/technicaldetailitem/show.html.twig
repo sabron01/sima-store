@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Technicaldetailitem</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ technicalDetailItem.id }}</td>
+            </tr>
+            <tr>
+                <th>Value</th>
+                <td>{{ technicalDetailItem.value }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if technicalDetailItem.createdAt %}{{ technicalDetailItem.createdAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if technicalDetailItem.updateAt %}{{ technicalDetailItem.updateAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isdeleted</th>
+                <td>{% if technicalDetailItem.isDeleted %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if technicalDetailItem.deletedAt %}{{ technicalDetailItem.deletedAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('technicaldetailitem_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('technicaldetailitem_edit', { 'id': technicalDetailItem.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

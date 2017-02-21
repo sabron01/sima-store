@@ -1,0 +1,18 @@
+{% extends 'SIMAOnlineStoreBundle::backend.html.twig' %}
+
+{% block content %}
+    <h1>Gallerie d' Article : {{ article.label }}</h1>
+
+<ul>
+{% for picture in article.pictures %}
+<li>
+<img src="{{ asset('uploads/articles/'~picture.fileName) }} ">
+</li>
+{% endfor %}
+</ul>
+    <ul>
+        <li>
+            <a href="{{ path('article_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

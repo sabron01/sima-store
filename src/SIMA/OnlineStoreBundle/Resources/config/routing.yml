@@ -1,0 +1,3 @@
+sima_online_store_homepage:
+    path:     /
+    defaults: { _controller: SIMAOnlineStoreBundle:Default:index }

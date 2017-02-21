@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articlemodel</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ articleModel.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ articleModel.label }}</td>
+            </tr>
+            <tr>
+                <th>Supplier</th>
+                <td>{{ articleModel.supplier }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if articleModel.createdAt %}{{ articleModel.createdAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updateat</th>
+                <td>{% if articleModel.updateAt %}{{ articleModel.updateAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isdeleted</th>
+                <td>{% if articleModel.isDeleted %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if articleModel.deletedAt %}{{ articleModel.deletedAt|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('articlemodel_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('articlemodel_edit', { 'id': articleModel.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

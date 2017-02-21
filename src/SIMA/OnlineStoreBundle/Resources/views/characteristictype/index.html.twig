@@ -1,0 +1,49 @@
+{% extends 'SIMAOnlineStoreBundle::backend.html.twig' %}
+
+{% block content %}
+    <h1>Characteristictypes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Category</th>
+                <th>Createdat</th>
+                <th>Updateat</th>
+                <th>Isdeleted</th>
+                <th>Deletedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for characteristicType in characteristicTypes %}
+            <tr>
+                <td><a href="{{ path('characteristictype_show', { 'id': characteristicType.id }) }}">{{ characteristicType.id }}</a></td>
+                <td>{{ characteristicType.label }}</td>
+                <td>{{ characteristicType.category }}</td>
+                <td>{% if characteristicType.createdAt %}{{ characteristicType.createdAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if characteristicType.updateAt %}{{ characteristicType.updateAt|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if characteristicType.isDeleted %}Yes{% else %}No{% endif %}</td>
+                <td>{% if characteristicType.deletedAt %}{{ characteristicType.deletedAt|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('characteristictype_show', { 'id': characteristicType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('characteristictype_edit', { 'id': characteristicType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('characteristictype_new') }}">Create a new characteristicType</a>
+        </li>
+    </ul>
+{% endblock %}
